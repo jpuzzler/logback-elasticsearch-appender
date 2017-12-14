@@ -24,12 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class AbstractElasticsearchPublisher<T> implements Runnable {
 
 	private static final AtomicInteger THREAD_COUNTER = new AtomicInteger(1);
-	private static final ThreadLocal<DateFormat> DATE_FORMAT = new ThreadLocal<DateFormat> () {
-		@Override
-		protected DateFormat initialValue() {
-			return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-		}
-	};
+	private static final ThreadLocal<DateFormat> DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"));
 
 	public static final String THREAD_NAME_PREFIX = "es-writer-";
 
