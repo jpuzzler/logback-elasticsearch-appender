@@ -21,6 +21,7 @@ In your `pom.xml` (or equivalent), add:
 
 In your `logback.xml`:
 
+```xml
         <appender name="ELASTIC" class="com.internetitem.logback.elasticsearch.ElasticsearchAppender">
             <url>http://yourserver/_bulk</url>
             <index>logs-%date{yyyy-MM-dd}</index>
@@ -87,6 +88,7 @@ In your `logback.xml`:
                 </encoder>
             </appender>
         </logger>
+```
 
 
 
